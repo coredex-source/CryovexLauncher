@@ -47,6 +47,8 @@
 #include "ui/widgets/PageContainer.h"
 
 #include "InstancePageProvider.h"
+// CRYOVEX: Use custom page provider for additional tabs
+#include "patches/InstancePageProviderConfig.h"
 
 #include "icons/IconList.h"
 
@@ -65,7 +67,8 @@ InstanceWindow::InstanceWindow(InstancePtr instance, QWidget* parent) : QMainWin
 
     // Add page container
     {
-        auto provider = std::make_shared<InstancePageProvider>(m_instance);
+        // CRYOVEX: Use custom page provider
+        auto provider = std::make_shared<ACTIVE_INSTANCE_PAGE_PROVIDER>(m_instance);
         m_container = new PageContainer(provider.get(), "console", this);
         m_container->setParentContainer(this);
         setCentralWidget(m_container);

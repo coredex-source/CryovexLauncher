@@ -1,5 +1,9 @@
 project(application)
 
+################################ CRYOVEX PATCHES ################################
+# Include Cryovex-specific patches to maintain separation from upstream
+include(patches/CMakeLists.txt)
+
 ################################ FILES ################################
 
 ######## Sources and headers ########
@@ -1155,6 +1159,9 @@ SET(LAUNCHER_SOURCES
     ui/instanceview/InstanceDelegate.h
     ui/instanceview/VisualGroup.cpp
     ui/instanceview/VisualGroup.h
+
+    # CRYOVEX - Custom patches
+    ${CRYOVEX_PATCHES_SOURCES}
 )
 
 if (APPLE)
@@ -1241,6 +1248,9 @@ qt_wrap_ui(LAUNCHER_UI
     ui/dialogs/BlockedModsDialog.ui
     ui/dialogs/ChooseProviderDialog.ui
     ui/dialogs/skins/SkinManageDialog.ui
+
+    # CRYOVEX - Custom patches UI
+    ${CRYOVEX_PATCHES_UI}
 )
 
 qt_wrap_ui(PRISM_UPDATE_UI

@@ -1,0 +1,4 @@
+cmake -Bbuild -DCMAKE_INSTALL_PREFIX=install -DENABLE_LTO=ON -DCMAKE_PREFIX_PATH=C:\Qt\6.7.3\msvc2019_64\lib\cmake
+cmake --build build --config Debug -- /p:UseMultiToolTask=true /p:EnforceProcessCountAcrossBuilds=true
+cmake --install build --config Debug
+cmake --install build --config Debug --component portable
